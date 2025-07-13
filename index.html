@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahin Mess</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#87CEEB" />
+  <style>
+    :root {
+      --sky-blue: #87CEEB;
+      --deep-blue: #1E90FF;
+      --rgb-effect: linear-gradient(45deg, red, orange, yellow, green, cyan, blue, violet);
+    }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: linear-gradient(135deg, var(--sky-blue), #e0f7fa);
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;} to {opacity: 1;}
+    }
+    .welcome-title {
+      font-size: 2.5em;
+      text-align: center;
+      background: var(--rgb-effect);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flow 5s linear infinite;
+    }
+    @keyframes flow {
+      0% {background-position: 0% 50%;}
+      100% {background-position: 100% 50%;}
+    }
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: var(--deep-blue);
+      color: white;
+    }
+    .photo-upload {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #ccc;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .box {
+      background: #fff;
+      padding: 10px;
+      margin: 10px 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1 class="welcome-title">WELCOME MAHIN MESS</h1>
+  <div class="footer">made by BYAZID</div>
+
+  <div class="box"><strong>Month:</strong> <input type="text" placeholder="e.g. July 2025"></div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ছবি</th>
+        <th>নাম</th>
+        <th>রুম ভাড়া</th>
+        <th>মিল</th>
+        <th>খালার টাকা</th>
+        <th>কারেন্ট বিল</th>
+        <th>খড়ির টাকা</th>
+        <th>জরিমানা</th>
+        <th>ফোন নম্বর</th>
+        <th>ঠিকানা</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="photo-upload" onclick="uploadPhoto(this)">+</div></td>
+        <td contenteditable="true">মেম্বার ১</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">017XXXXXXXX</td>
+        <td contenteditable="true">ঠিকানা</td>
+        <td><button onclick="showDetails()">Details</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box">
+    <h3>💬 Messaging Section:</h3>
+    <textarea rows="3" style="width:100%"></textarea>
+  </div>
+
+  <div class="box">
+    <h3>🔔 Notifications:</h3>
+    <ul><li>নতুন কিছু নেই।</li></ul>
+  </div>
+
+  <div class="box">
+    <h3>📌 Sitonam (মেসের নিয়ম):</h3>
+    <p contenteditable="true">১. সময়মতো বিল পরিশোধ করুন।<br>২. কারো জিনিস নাড়াচাড়া করবেন না।</p>
+  </div>
+
+  <script>
+    const ADMIN_PASSWORD = "MAHINMESSADMIN99";
+
+    function uploadPhoto(div) {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.onchange = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = () => {
+          div.innerHTML = '';
+          const img = document.createElement('img');
+          img.src = reader.result;
+          img.style.width = '100%';
+          img.style.borderRadius = '50%';
+          div.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      };
+      input.click();
+    }
+
+    function showDetails() {
+      alert("Details page coming soon (admin only).");
+    }
+  </script>
+</body>
+</html>
